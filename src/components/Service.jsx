@@ -50,7 +50,7 @@ const Service = () => {
             })}
          </div>
 
-         <div className="container bg-[#F6F6F6] p-5 rounded-xl flex justify-between">
+         <div className="container bg-[#F6F6F6] p-5 rounded-xl md:flex block justify-between">
              <div>
               <p className='text-[#1A202C] text-[30px] font-semibold mb-8'>Contact</p>
               <div className=''>
@@ -68,7 +68,7 @@ const Service = () => {
                </div>
             </div>
              </div>
-             <div>
+             <div className='md:mt-0 mt-6'>
              <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40153.07050239024!2d73.04487703881247!3d51.02414757721507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x425ac3e5d2d54291%3A0x7e248fa0122450f1!2zMDIwMDAwINCa0LDRgNCw0YLQsNC7LCDQmtCw0LfQsNGF0YHRgtCw0L0!5e0!3m2!1sru!2s!4v1750664351441!5m2!1sru!2s"
                 width="600"
@@ -81,7 +81,7 @@ const Service = () => {
 
 
              </div>
-             <div className='h-[200px] w-[174px] cursor-pointer bg-[#FF7700] rounded-xl py-4 mt-20'>
+             <div className='h-[200px] w-[174px] cursor-pointer bg-[#FF7700] rounded-xl mx-auto py-4 mt-20'>
                <div className='w-[80px] h-[90px] rounded-xl bg-white mx-auto p-2 mb-5'>
                 <p className='text-center text-[20px] text-[#FF7700] font-semibold'>PDF</p>
                 <IoMenuOutline className='text-gray-300 mx-auto text-3xl'/>

@@ -4,6 +4,7 @@ import { services } from '../constans'
 import Questions from '../components/Questions'
 import { questions } from '../constans'
 import { Dialog, DialogHeader, DialogContent,DialogTrigger,DialogPortal,DialogOverlay } from "@/components/ui/dialog";
+import StatsSection from '@/components/Count';
 const Home = () => {
   return (
     <Dialog>
@@ -42,22 +43,7 @@ const Home = () => {
           <h3 className='text-[#171923] font-bold text-2xl md:text-4xl text-center'>Seamless delivery with NOMEX logistics</h3>
           <p className='text-sm text-[#333] text-center mt-2 md:mt-4'>Increase productivity and achieve success with real-time visibility and automation at every stage of your workflow.</p>
          </div>
-          <div className='bg-[#EDF2F7]  py-16 w-full'>
-              <div className="container grid lg:grid-cols-3 gap-y-6 md:grid-cols-2 grid-cols-1">
-                <div className='text-center'>
-                    <p className='text-[#121D50] text-6xl md:text-[80px] font-medium'>5+</p>
-                    <p className='text-[#121D50] text-[16px] font-normal mt-2'>years on the market</p>
-                </div>
-                <div className='text-center'>
-                    <p className='text-[#121D50] text-6xl md:text-[80px] font-medium'>10,000</p>
-                    <p className='text-[#121D50] text-[16px] font-normal mt-2'>tons of cargo transported annually</p>
-                </div>
-                <div className='text-center'>
-                    <p className='text-[#121D50] text-6xl md:text-[80px] font-medium'>3,000+</p>
-                    <p className='text-[#121D50] text-[16px] font-normal mt-2'>successful cases</p>
-                </div>
-         </div>
-          </div>
+          <StatsSection/>
 
           <div className="container">
              <div className='w-full block md:flex py-16 justify-between gap-8'>
@@ -70,15 +56,15 @@ const Home = () => {
              <img src='./fura.png' className="flex-1 rounded-2xl w-[541px] h-[390px]"></img>
              </div>
              <div className='grid md:grid-cols-2 gap-5 grid-cols-1 lg:grid-cols-3 mb-16'>
-               <div className='md:w-[387px] justify-center text-white rounded-xl  h-[84px] flex items-center gap-x-2 bg-[#FF7700]'>
+               <div className='md:w-[387px] justify-center text-white rounded-xl  md:h-[84px] h-16 flex items-center gap-x-2 bg-[#FF7700]'>
                    <h5 className='text-[24px] font-semibold'>01</h5>
                    <p className='text-[18px] font-semibold'>EXPERTISE AND EXPERIENCE</p>
                </div>
-               <div className='md:w-[387px] justify-center text-white rounded-xl  h-[84px] flex items-center gap-x-2 bg-[#FF7700]'>
+               <div className='md:w-[387px] justify-center text-white rounded-xl  md:h-[84px] h-16 flex items-center gap-x-2 bg-[#FF7700]'>
                    <h5 className='text-[24px] font-semibold'>02</h5>
                    <p className='text-[18px] font-semibold'>COMMITMENT TO QUALITY</p>
                </div>
-               <div className='md:w-[387px] justify-center text-white rounded-xl h-[84px] flex items-center gap-x-2 bg-[#FF7700]'>
+               <div className='md:w-[387px] justify-center text-white rounded-xl md:h-[84px] h-16  flex items-center gap-x-2 bg-[#FF7700]'>
                    <h5 className='text-[24px] font-semibold'>03</h5>
                    <p className='text-[18px] font-semibold'>COMPREHENSIVE SERVICES</p>
                </div>
