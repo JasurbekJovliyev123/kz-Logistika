@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+
 import { NavLink } from 'react-router-dom'
 import { languages } from '../constans'
 import { TfiMenu } from "react-icons/tfi";
 import { IoMdClose } from "react-icons/io";
 import { services } from '../constans';
-import { Dialog,DialogClose,DialogContent,DialogDescription,DialogPortal,DialogOverlay,DialogTitle,DialogTrigger } from '@radix-ui/react-dialog';
-import { DialogFooter, DialogHeader } from './ui/dialog';
+import { Dialog,DialogClose,DialogContent,DialogPortal,DialogOverlay,DialogTrigger } from '@radix-ui/react-dialog';
+import { DialogHeader } from './ui/dialog';
+import { useState } from 'react';
 const Navbar = () => {
     const [openNavbar,setopenNavbar]=useState(false)
     const [openLang, setopenLang]=useState(false)
@@ -83,7 +84,7 @@ const Navbar = () => {
                <NavLink to={'/'} className='text-[18px] hover:text-[#FF7700] md:block hidden text-black font-semibold'>About</NavLink>
                 <div className='relative'>
                 <NavLink onClick={()=>setOnServices(!onServices)} className='text-[18px] md:block hidden hover:text-[#FF7700] text-black font-semibold'>Services</NavLink>
-                  {onServices && <div className='absolute w-[224px] top-8 z-50 border-2 right-0 border-gray-100 rounded-2xl p-3 bg-white shadow-lg flex flex-col '>
+                  {onServices && <div className='absolute w-[224px] md:block hidden top-8 z-50 border-2 right-0 border-gray-100 rounded-2xl p-3 bg-white shadow-lg flex flex-col '>
                       {services && services.map((item)=>{
                          return <NavLink to={`services/${item.id}`} onClick={()=>setOnServices(!onServices)} key={item.id} className='text-sm font-normal cursor-pointer hover:bg-gray-100 rounded-2xl p-2  text-black'>{item.title}</NavLink>
                   })}
@@ -95,16 +96,16 @@ const Navbar = () => {
           {openNavbar && 
           <div className='w-full'>
                 <IoMdClose className='text-3xl z-20 text-blue-700 '/>
-               <div className='absolute top-0 left-0 right-0 w-full p-6 py-16 bg-gray-300 flex flex-col gap-3'>
+               <div className='absolute top-0 left-0 right-0 w-full p-6 py-16 h-[100vh] bg-gray-300 flex flex-col gap-3'>
                <NavLink to={'/'} className='text-[18px] hover:text-[#FF7700] text-black font-semibold'>Home</NavLink>
                <NavLink to={'/'} className='text-[18px] text-black font-semibold'>About</NavLink>
                <div className='relative'>
-                <NavLink className='text-[18px] hover:text-[#FF7700] text-black font-semibold'>Services</NavLink>
-                  <div className='absolute top-20 z-50 border-2'>
-                      {services && services.map((item)=>{
-                         return <NavLink to={`services/${item.id}`} key={item.id} className='text-xl text-black'>{item.id}</NavLink>
+                <NavLink onClick={()=>setOnServices(!onServices)}  className='text-[18px] hover:text-[#FF7700] text-black font-semibold'>Services</NavLink>
+                  {onServices && <div className='absolute top-20 z-50 border-2 p-5'>
+                  {services && services.map((item)=>{
+                         return <NavLink to={`services/${item.id}`} onClick={()=>setOnServices(!onServices)} key={item.id} className='text-sm font-normal cursor-pointer hover:bg-gray-100 rounded-2xl  text-black'><p onClick={()=>setOnServices(!onServices)}>{item.title}</p></NavLink>
                   })}
-                  </div>
+                  </div>}
                </div>
                <NavLink to={'/contact'} className='text-[18px] hover:text-[#FF7700] text-black font-semibold'>Contact</NavLink>
             </div>

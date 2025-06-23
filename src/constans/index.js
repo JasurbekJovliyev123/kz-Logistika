@@ -119,3 +119,152 @@ export const languages=[
     languageName:'Kazakhistan'
   },
 ]
+
+import kz from '../assets/kz.svg'
+import ru from '../assets/ru.svg'
+import chn from '../assets/chn.svg'
+import sng from '../assets/sng.svg'
+import uz from '../assets/uz.svg'
+import ir from '../assets/ir.svg'
+import eu from '../assets/eu.svg'
+export const countrys=[
+  {
+    id:1,
+    name:'Within Kazakhstan',
+    image:kz,
+    title:'Cargo delivery to all regions and oilfields'
+  },
+  {
+    id:2,
+    name:'Russia',
+    image:ru,
+    title:'From the Far Eastern regions to the European part of the country'
+  },
+  {
+    id:3,
+    name:'China',
+    image:chn,
+    title:'From major industrial centers to ports and warehouses across China'
+  },
+  {
+    id:4,
+    name:'CIS',
+    image:sng,
+    title:'Covering CIS countries, ensuring uninterrupted transportation'
+  },
+  {
+    id:5,
+    name:'Uzbekistan',
+    image:uz,
+    title:'Ensuring delivery to key trade and industrial centers'
+  },
+  {
+    id:6,
+    name:'Iran',
+    image:ir,
+    title:'Transportation through key ports and logistics hubs'
+  },
+  {
+    id:7,
+    name:'Other Countries',
+    image:eu,
+    title:'We adapt our services for deliveries to various international destinations based on your needs'
+  },
+]
+import icon1 from '../assets/icon1.svg'
+import icon2 from '../assets/icon2.svg'
+import icon3 from '../assets/icon3.svg'
+import icon4 from '../assets/icon4.svg'
+import icon5 from '../assets/icon5.svg'
+export const icons=[
+  {
+    id:1,
+    image:icon1,
+    title:'Own vehicle fleet'
+  },
+  {
+    id:2,
+    image:icon2,
+    title:'Partners in Europe, Asia (China), and the CIS'
+  },
+  {
+    id:3,
+    image:icon3,
+    title:'Warehouse in Atyrau'
+  },
+  {
+    id:4,
+    image:icon5,
+    title:'We take on large logistics projects'
+  },
+  {
+    id:5,
+    image:icon4,
+    title:'Logistics training'
+  },
+]
+
+export const delivery=[
+  {
+    id:1,
+    title:'Consultation and Planning',
+    subtitle:[
+      '— Needs assessment: analysis of your requirements, including cargo type and volume, delivery timeframes, and route specifics.',
+      '— Transportation planning: creating the optimal route considering all logistics factors such as road conditions, customs procedures (for international shipments), and safety requirements.'
+    ]
+  },
+  {
+    id:2,
+    title:'Selection and Preparation of Railcars',
+    smTitle:'Types of railcars:',
+    subtitle:[
+      '— Platforms: For transporting containers, oversized, or heavy cargo.',
+      '— Covered railcars: For protecting cargo from external factors like rain or dust.',
+       '— Tank cars: For transporting liquids and chemicals.',
+      '— Refrigerated railcars: For perishable goods requiring specific temperature conditions.',
+      '— Packaging and labeling: Services for secure and compliant packaging and labeling throughout the journey.'
+    ]
+  },
+  {
+    id:3,
+    title:'Transportation',
+    smTitle:'Routes:',
+    subtitle:[
+      '— China – CIS: Transport via Central Asia using transit routes through Kazakhstan, Uzbekistan, and other CIS countries.',
+      '— China – Europe: Transport via Russia and Belarus, with possible corridors through Eastern European countries.',
+      '— Cargo tracking: Using monitoring systems to track cargo in real time and manage potential risks.'
+    ]
+  },
+  {
+    id:4,
+    title:'Customs Clearance (for International Shipments)',
+    subtitle:[
+      '— Document preparation: Assistance in preparing and submitting all necessary documents for customs clearance in the countries of origin and destination.',
+      '— Interaction with customs authorities: Handling matters related to customs procedures and cargo clearance.'
+    ]
+  },
+  {
+    id:5,
+    title:'Delivery and Distribution',
+    subtitle:[
+      '— Transshipment to other modes of transport: Organizing cargo transfer from rail to road or sea for last-mile delivery.',
+      '— Unloading and distribution: Services for unloading and distributing cargo at warehouses and distribution centers.'
+    ]
+  },
+  {
+    id:6,
+    title:'Feedback and Support',
+    subtitle:[
+      '— Customer support: Prompt response to transportation-related inquiries and issues.',
+      '— Quality control: Ensuring high service standards and timely resolution of issues.'
+    ]
+  },
+  {
+    id:7,
+    title:'Additional Services',
+    subtitle:[
+      '— Cargo insurance: Offering insurance options to protect against loss or damage.',
+      '— Warehousing services: Temporary storage of goods at company or partner warehouses.'
+    ]
+  }
+]

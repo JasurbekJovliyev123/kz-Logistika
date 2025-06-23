@@ -1,16 +1,25 @@
-import React from 'react'
+
 import { Outlet } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import whatsapp from '../assets/whatsapp.png'
+import { BsTelephoneFill } from "react-icons/bs";
 const MainLayout = () => {
   return (
-    <>
+    <div className='relative'>
       <Navbar/>
       <main className='min-h-[70vh]'>
          <Outlet/>
       </main> 
        <Footer/> 
-    </>
+       <div className='rounded-full absolute fixed bottom-32 p-4 bg-[#FF7700] right-3 md:right-10'>
+         <BsTelephoneFill className='text-white text-2xl md:text-3xl cursor-pointer'/>
+       </div>
+       <div className='rounded-full absolute fixed md:hidden block bottom-16 cursor-pointer p-4 bg-[#25D366] right-3 md:right-10'>
+         <img src={whatsapp}  className='text-white w-[25px] md:w-8 '/>
+         
+       </div>
+    </div>
   )
 }
 
