@@ -3,13 +3,14 @@ import Services from '../components/Services'
 import { services } from '../constans'
 import Questions from '../components/Questions'
 import { questions } from '../constans'
+import hh from '../assets/headerbanner2.jpg'
 import { Dialog, DialogHeader, DialogContent,DialogTrigger,DialogPortal,DialogOverlay } from "@/components/ui/dialog";
 import StatsSection from '@/components/Count';
 const Home = () => {
   return (
     <Dialog>
         <div className='py-8 pt-36 lg:pt-[170px]'>
-         <div className="w-full md:h-[650px] h-[800px] bg-[url('./homeimage.png')] bg-cover bg-center">
+         <div style={{'backgroundImage':`url(${hh})`}} className="w-full md:h-[650px] h-[800px] bg-cover bg-center">
               <div className='container md:flex block pt-6 h-screen items-center justify-between '>
                   <div className='max-w-[463px]'>
                     <h2 className='md:text-[48px] text-[36px] leading-12 md:leading-16 mb-2 md:mb-4 text-white font-bold'>Transport and <br /> Logistics</h2>
