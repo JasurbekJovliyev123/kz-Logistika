@@ -11,32 +11,7 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 import Form from '@/components/Form'
 const Home = () => {
-   const [formData1, setFormData1] = useState({
-      name: '',
-      phone: ''
-    });
   
-    const handleChange1 = (e) => {
-      setFormData(prev => ({
-        ...prev,
-        [e.target.name]: e.target.value
-      }));
-    };
-  
-    const handleSubmit1 = (e) => {
-      e.preventDefault();
-      const { name, phone } = formData;
-  
-      if (name.trim() === '' || phone.trim() === '') {
-        toast.error("Please fill in all fields!");
-      } else {
-        toast.success("The request was sent successfully!");
-         setFormData1({
-          name: '',
-          phone: ''
-        })
-      }
-    };
   const [formData, setFormData] = useState({
     from: '',
     to: '',

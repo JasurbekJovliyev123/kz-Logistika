@@ -1,4 +1,3 @@
-import React from 'react'
 import { useParams } from 'react-router-dom'
 import { countrys, delivery, icons, services } from '../constans';
 import map from '../assets/map.png'
@@ -82,7 +81,7 @@ const Service = () => {
             })}
          </div>
 
-         <div className="container bg-[#F6F6F6] p-5 rounded-xl md:flex block justify-between">
+         <div className="container bg-[#F6F6F6] p-5 rounded-xl md:flex md:gap-x-6 block justify-between">
              <div>
               <p className='text-[#1A202C] text-[30px] font-semibold mb-8'>Contact</p>
               <div className=''>

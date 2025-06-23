@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { IoIosArrowDown } from "react-icons/io"
 import { IoIosArrowUp } from "react-icons/io";
 
@@ -13,7 +13,7 @@ const Questions = ({item}) => {
         </div>  
        {
         open &&  <div className='absolute top-16'>
-             <p className={`overflow-hidden transition-all duration-500 ease-in-out ${
+             <p className={`overflow-hidden transition-all duration-800 ease-in-out ${
           open ? 'max-h-[200px] text-[16px] md:text-[20px] text-[#676767] opacity-100 mt-4' : 'max-h-0 opacity-0'
         }`}>{item.answer}</p>
         </div>

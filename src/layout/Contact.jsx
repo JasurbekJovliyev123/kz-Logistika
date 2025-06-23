@@ -4,7 +4,7 @@ import pdf from '../assets/rekvizit.pdf'
 const Contact = () => {
   return (
     <div className="md:pt-48 pt-36 pb-12">
-          <div className="container bg-[#F6F6F6] p-5 rounded-xl md:flex block justify-between">
+          <div className="container bg-[#F6F6F6] p-5 rounded-xl md:flex md:gap-x-6 block justify-between">
                  <div>
                   <p className='text-[#1A202C] text-[30px] font-semibold mb-8'>Contact</p>
                   <div className=''>
