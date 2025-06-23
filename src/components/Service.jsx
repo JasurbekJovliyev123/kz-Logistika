@@ -6,18 +6,50 @@ import Country from './Country';
 import Delivery from './Delivery';
 import pdf from '../assets/rekvizit.pdf'
 import { IoMenuOutline } from "react-icons/io5";
+import { Dialog, DialogHeader, DialogContent,DialogTrigger,DialogPortal,DialogOverlay } from "@/components/ui/dialog";
+import { useState } from 'react'
+import { toast } from 'react-toastify';
 const Service = () => {
   const {id}=useParams()
   console.log(id);
    const serviceData=services.find((item)=>item.id==id)
    console.log(serviceData);
-   
+   const [formData, setFormData] = useState({
+    name: '',
+    phone: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, phone } = formData;
+
+    if (name.trim() === '' || phone.trim() === '') {
+      toast.error("Please fill in all fields!");
+    } else {
+      toast.success("The request was sent successfully!");
+       setFormData({
+        name: '',
+        phone: ''
+      })
+    }
+  };
   return (
-    <div className='pt-24 pb-12'>
+    <Dialog>
+         <div className='pt-24 pb-12'>
         <div style={{ backgroundImage: `url(${map})` }} className={`container py-16 md:py-24 block md:flex items-center justify-between  w-full h-auto md:h-[500px]`}>
             <div>
                 <p className='text-[#2F2F2F] max-w-[400px] leading-[51px] text-3xl mb-6 md:text-[48px] font-semibold'>{serviceData.title}</p>
-                <button className='bg-[#FF7700]  md:mb-0 cursor-pointer text-white h-[45px] w-[180px] rounded-[12px] font-medium'>REQUEST NOW</button>
+                <DialogTrigger asChild
+                >
+                  <button className='bg-[#FF7700]  md:mb-0 cursor-pointer text-white h-[45px] w-[180px] rounded-[12px] font-medium'>REQUEST NOW</button>
+                </DialogTrigger>
                 <p className='md:mt-20 mt-5 max-w-[600px] text-[#1A202C] text-sm leading-8'>{serviceData.subtitle}</p>
             </div>
             <img src={serviceData.img} className='md:w-[570px] h-[300px] md:h-[350px]' alt="" />
@@ -90,6 +122,47 @@ const Service = () => {
              </div>
          </div>
     </div>
+    <DialogPortal>
+              <DialogOverlay className="fixed inset-0 bg-black/2 backdrop-blur-sm z-40" />
+              <DialogContent className="fixed top-1/2 left-1/2 z-50 translate-x-[-50%] translate-y-[-50%] bg-white p-6 rounded-lg">
+                  <DialogHeader>
+                  <form onSubmit={handleSubmit} className='md:max-w-[440px] h-auto bg-white rounded-[16px] md:px-8 px-5 py-4 md:py-[36px]'>
+                        <p className='mb-3 text-[#1A202C] text-[22px] text-center font-medium'>Request for consultation</p>
+                        <p className='my-3 text-[#1A202C] text-sm font-medium text-center'>
+                          Our specialists will contact you for a consultation or to calculate the cost of transporting your cargo. They will clarify all the details of the transportation
+                        </p>
+
+                        <p className='my-3 text-[#1A202C] text-sm font-medium'>Your Name</p>
+                        <input
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          className='bg-[#F1F1F1] w-full placeholder:font-medium flex-1 outline-none px-2.5 h-12 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0'
+                          type="text"
+                          placeholder="Enter your name"
+                        />
+
+                        <p className='my-3 text-[#1A202C] text-sm font-medium'>Your Phone</p>
+                        <input
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          className='bg-[#F1F1F1] w-full placeholder:font-medium flex-1 outline-none px-2.5 h-12 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0'
+                          type="text"
+                          placeholder="Enter your phone"
+                        />
+
+                        <button
+                          type="submit"
+                          className='bg-[#FF7700] text-white mt-4 text-[16px] cursor-pointer h-[45px] w-full rounded-[12px] font-medium'
+                        >
+                          Order a Call
+                        </button>
+                      </form>
+                  </DialogHeader>
+             </DialogContent>
+            </DialogPortal> 
+    </Dialog>
   )
 }
 

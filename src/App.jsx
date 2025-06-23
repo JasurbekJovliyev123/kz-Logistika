@@ -3,6 +3,7 @@ import { createBrowserRouter,RouterProvider } from 'react-router-dom'
 import MainLayout from './pages/MainLayout'
 import { Home,About,Contact,Services } from './layout'
 import Service from './components/Service'
+
 const App = () => {
   const route=createBrowserRouter([
     {
@@ -24,7 +25,8 @@ const App = () => {
         {
           path:'/services/:id',
           element:<Service/>
-        }
+        },
+        
       ]
     }
   ])

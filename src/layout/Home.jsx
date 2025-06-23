@@ -7,7 +7,72 @@ import hh from '../assets/headerbanner2.jpg'
 import { Dialog, DialogHeader, DialogContent,DialogTrigger,DialogPortal,DialogOverlay } from "@/components/ui/dialog";
 import StatsSection from '@/components/Count';
 import images from '../assets/company-image.jpg'
+import { useState } from 'react'
+import { toast } from 'react-toastify'
+import Form from '@/components/Form'
 const Home = () => {
+   const [formData1, setFormData1] = useState({
+      name: '',
+      phone: ''
+    });
+  
+    const handleChange1 = (e) => {
+      setFormData(prev => ({
+        ...prev,
+        [e.target.name]: e.target.value
+      }));
+    };
+  
+    const handleSubmit1 = (e) => {
+      e.preventDefault();
+      const { name, phone } = formData;
+  
+      if (name.trim() === '' || phone.trim() === '') {
+        toast.error("Please fill in all fields!");
+      } else {
+        toast.success("The request was sent successfully!");
+         setFormData1({
+          name: '',
+          phone: ''
+        })
+      }
+    };
+  const [formData, setFormData] = useState({
+    from: '',
+    to: '',
+    cargo: '',
+    name: '',
+    phone: '',
+    email: '',
+    company: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const isEmpty = Object.values(formData).some(value => value.trim() === '');
+
+    if (isEmpty) {
+      toast.error("Please fill in all fields!");
+    } else {
+      toast.success("The request was sent successfully!");
+      setFormData({
+        from: '',
+        to: '',
+        cargo: '',
+        name: '',
+        phone: '',
+        email: '',
+        company: '',
+      })
+    }
+  };
   return (
     <Dialog>
         <div className='py-8 pt-36 lg:pt-[170px]'>
@@ -20,24 +85,28 @@ const Home = () => {
                           <button className='bg-[#FF7700] mb-10 md:mb-0 cursor-pointer text-white h-[45px] w-[180px] rounded-[12px] font-medium'>REQUEST NOW</button>
                     </DialogTrigger>
               </div>
-              <form className='md:w-[480px] h-[450px] bg-white rounded-[16px] px-10 py-[36px]'>
-                 <p className='mb-3 text-[#1A202C] text-sm font-medium'>Calculate shipping cost:</p>
-                 <div className='w-full flex items-center gap-x-2'>
-                   <input placeholder='From' className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
-                   <input placeholder='To' className='bg-[#F1F1F1] placeholder:font-medium w-[50%]  flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
-                 </div>
-                 <p className='my-3 text-[#1A202C] text-sm font-medium'>Cargo information:</p>
-                   <input placeholder='Cargo description (weight, volume)' className='bg-[#F1F1F1] w-full placeholder:font-medium flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
-                   <p className='my-3 text-[#1A202C] text-sm font-medium'>Contact details</p>
-                 <div className='w-full flex items-center gap-x-2'>
-                   <input placeholder='Your name' className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
-                   <input placeholder='Your phone' className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
-                 </div>
-                 <div className='w-full flex my-3 items-center gap-x-2'>
-                   <input placeholder='Your Email' className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="email" name="" />
-                   <input placeholder='Company' className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
-                 </div>
-                 <button className='bg-[#FF7700] text-white mt-4 text-[16px] cursor-pointer h-[45px] w-full rounded-[12px] font-medium'>Calculate</button>
+              <form onSubmit={handleSubmit} className='md:w-[480px] h-[auto] bg-white rounded-[16px] px-10 py-[36px]'>
+                <p className='mb-3 text-[#1A202C] text-sm font-medium'>Calculate shipping cost:</p>
+                <div className='w-full flex items-center gap-x-2'>
+                  <input name="from" value={formData.from} onChange={handleChange} placeholder='From' className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" />
+                  <input name="to" value={formData.to} onChange={handleChange} placeholder='To' className='bg-[#F1F1F1] placeholder:font-medium w-[50%] flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" />
+                </div>
+
+                <p className='my-3 text-[#1A202C] text-sm font-medium'>Cargo information:</p>
+                <input name="cargo" value={formData.cargo} onChange={handleChange} placeholder='Cargo description (weight, volume)' className='bg-[#F1F1F1] w-full placeholder:font-medium flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" />
+
+                <p className='my-3 text-[#1A202C] text-sm font-medium'>Contact details</p>
+                <div className='w-full flex items-center gap-x-2'>
+                  <input name="name" value={formData.name} onChange={handleChange} placeholder='Your name' className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" />
+                  <input name="phone" value={formData.phone} onChange={handleChange} placeholder='Your phone' className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" />
+                </div>
+
+                <div className='w-full flex my-3 items-center gap-x-2'>
+                  <input name="email" value={formData.email} onChange={handleChange} placeholder='Your Email' className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="email" />
+                  <input name="company" value={formData.company} onChange={handleChange} placeholder='Company' className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" />
+                </div>
+
+                <button type="submit" className='bg-[#FF7700] text-white mt-4 text-[16px] cursor-pointer h-[45px] w-full rounded-[12px] font-medium'>Calculate</button>
               </form>
               </div>
          </div>
@@ -53,7 +122,9 @@ const Home = () => {
                 <h4 className='text-[#FF7700] text-[16px] font-medium uppercase mb-2 md:mb-3'>About</h4>
                 <h2 className='text-[#121D50] font-bold text-[24px] md:text-[45px] leading-9 md:leading-14 mb-3'>LOGISTICS SOLUTIONS FOR YOUR SUCCESS</h2>
                 <p className='text-[#4A5568] font-normal text-[16px] mb-3'>At NOMEX LOGISTIC, we believe in providing our clients with personalized and efficient logistics solutions that meet their unique needs. With years of experience and a team of experts, we strive to ...</p>
-                <button className='bg-[#FF7700] cursor-pointer mb-8 md:mb-0 text-white h-[45px] w-[180px] rounded-[12px] font-medium'>REQUEST NOW</button>
+                <DialogTrigger asChild>
+                          <button className='bg-[#FF7700] mb-10 md:mb-0 cursor-pointer text-white h-[45px] w-[180px] rounded-[12px] font-medium'>REQUEST NOW</button>
+                    </DialogTrigger>
              </div>
              <img src={images} className="flex-1 rounded-2xl w-[541px] h-[390px]"></img>
              </div>
@@ -98,16 +169,7 @@ const Home = () => {
               <DialogOverlay className="fixed inset-0 bg-black/2 backdrop-blur-sm z-40" />
               <DialogContent className="fixed top-1/2 left-1/2 z-50 translate-x-[-50%] translate-y-[-50%] bg-white p-6 rounded-lg">
                   <DialogHeader>
-                    <form className='md:max-w-[440px] h-[450px] bg-white rounded-[16px] md:px-8 px-5 py-4 md:py-[36px]'>
-                        <p className='mb-3 text-[#1A202C] text-[22px] text-center font-medium'>Request for consultation</p>
-                          <p className='my-3 text-[#1A202C] text-sm font-medium text-center'>Our specialists will contact you for a consultation or to calculate the cost of transporting your cargo. They will clarify all the details of the transportation</p>
-                          <p  className='my-3 text-[#1A202C] text-sm font-medium'>Your Name</p>
-                            <input className='bg-[#F1F1F1] w-full placeholder:font-medium flex-1 outline-none px-2.5 h-12 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
-                            <p className='my-3 text-[#1A202C] text-sm font-medium'>Your Phone</p>
-                            <input className='bg-[#F1F1F1] w-full placeholder:font-medium flex-1 outline-none px-2.5 h-12 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
-                        
-                            <button className='bg-[#FF7700] text-white mt-4 text-[16px] cursor-pointer h-[45px] w-full rounded-[12px] font-medium'>Order a Call</button>
-                          </form>
+                    <Form/>
                   </DialogHeader>
              </DialogContent>
             </DialogPortal>
