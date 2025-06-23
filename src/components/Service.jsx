@@ -71,8 +71,8 @@ const Service = () => {
              <div className='md:mt-0 mt-6'>
              <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40153.07050239024!2d73.04487703881247!3d51.02414757721507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x425ac3e5d2d54291%3A0x7e248fa0122450f1!2zMDIwMDAwINCa0LDRgNCw0YLQsNC7LCDQmtCw0LfQsNGF0YHRgtCw0L0!5e0!3m2!1sru!2s!4v1750664351441!5m2!1sru!2s"
-                width="600"
-                height="450"
+                className="lg:w-[600px] w-[320px] h-[250px] md:h-[300px]"
+                
                 style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"

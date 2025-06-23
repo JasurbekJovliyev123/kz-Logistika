@@ -6,6 +6,7 @@ import { questions } from '../constans'
 import hh from '../assets/headerbanner2.jpg'
 import { Dialog, DialogHeader, DialogContent,DialogTrigger,DialogPortal,DialogOverlay } from "@/components/ui/dialog";
 import StatsSection from '@/components/Count';
+import images from '../assets/company-image.jpg'
 const Home = () => {
   return (
     <Dialog>
@@ -54,7 +55,7 @@ const Home = () => {
                 <p className='text-[#4A5568] font-normal text-[16px] mb-3'>At NOMEX LOGISTIC, we believe in providing our clients with personalized and efficient logistics solutions that meet their unique needs. With years of experience and a team of experts, we strive to ...</p>
                 <button className='bg-[#FF7700] cursor-pointer mb-8 md:mb-0 text-white h-[45px] w-[180px] rounded-[12px] font-medium'>REQUEST NOW</button>
              </div>
-             <img src='./fura.png' className="flex-1 rounded-2xl w-[541px] h-[390px]"></img>
+             <img src={images} className="flex-1 rounded-2xl w-[541px] h-[390px]"></img>
              </div>
              <div className='grid md:grid-cols-2 gap-5 grid-cols-1 lg:grid-cols-3 mb-16'>
                <div className='md:w-[387px] justify-center text-white rounded-xl  md:h-[84px] h-16 flex items-center gap-x-2 bg-[#FF7700]'>
