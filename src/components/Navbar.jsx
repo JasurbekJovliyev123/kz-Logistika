@@ -70,13 +70,20 @@ const Navbar = () => {
                           <span>-</span>
                           <span>{lang.languageName}</span>
                     </p>
-                    {openLang && <div className='absolute -right-7 p-3 border-gray-300 rounded-2xl bg-white top-8 border z-50 flex flex-col gap-y-2'>
-                         {languages && languages.map((item)=>{
-                             return  <p key={item.id} onClick={()=>handleLanguages(item)}>
-                                       <span className='text-black p-2 hover:bg-gray-200  rounded-2xl w-full'>{item.languageName}</span>
-                                     </p>
-                            })}
-                    </div>}
+                    {openLang && (
+                        <div className='absolute -right-7 h-[90px] w-[160px] justify-items-start rounded-lg py-3 bg-white top-8 border z-50 flex flex-col'>
+                          {languages &&
+                            languages
+                              .filter(item => item.id !== lang.id)
+                              .map((item) => (
+                                <p key={item.id} onClick={() => handleLanguages(item)}>
+                                  <span className='text-black p-1 hover:bg-gray-200 w-full block rounded-md'>
+                                    {item.languageName}
+                                  </span>
+                                </p>
+                              ))}
+                        </div>
+                      )}
                 </div>
             </button>
         </div>
@@ -85,8 +92,8 @@ const Navbar = () => {
                <NavLink to={'/'} className='text-[18px] hover:text-[#FF7700] md:block hidden text-black font-semibold'>Home</NavLink>
                <NavLink to={'/'} className='text-[18px] hover:text-[#FF7700] md:block hidden text-black font-semibold'>About</NavLink>
                 <div className='relative'>
-                <NavLink onClick={()=>setOnServices(!onServices)} className='text-[18px] md:block hidden hover:text-[#FF7700] text-black font-semibold'>Services</NavLink>
-                  {onServices && <div className='absolute w-[224px] md:block hidden top-8 z-50 border-2 right-0 border-gray-100 rounded-2xl p-3 bg-white shadow-lg flex flex-col '>
+                <p onClick={()=>setOnServices(!onServices)} className='text-[18px] md:block hidden cursor-pointer hover:text-[#FF7700] text-black font-semibold'>Services</p>
+                  {onServices && <div className='absolute w-[224px] md:flex hidden top-8 z-50 border-2 right-0 border-gray-100 rounded-2xl p-3 bg-white shadow-lg flex-col '>
                       {services && services.map((item)=>{
                          return <NavLink to={`services/${item.id}`} onClick={()=>setOnServices(!onServices)} key={item.id} className='text-sm font-normal cursor-pointer text-black'><p className='hover:bg-gray-200 p-2 rounded-2xl'>{item.title}</p></NavLink>
                   })}
