@@ -6,7 +6,7 @@ import { IoMdClose } from "react-icons/io";
 import { services } from '../constans';
 import { Dialog,DialogClose,DialogContent,DialogPortal,DialogOverlay,DialogTrigger } from '@radix-ui/react-dialog';
 import { DialogHeader } from './ui/dialog';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 const Navbar = () => {
     const [openNavbar,setopenNavbar]=useState(false)
     const [openLang, setopenLang]=useState(false)
@@ -25,7 +25,45 @@ const Navbar = () => {
         setopenLang(false);
 };
   const [onServices,setOnServices]=useState(false)
-    
+    const modalRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        setopenLang(false);
+      }
+    }
+
+    if (openLang) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [openLang, setopenLang]);
+    const menuRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setOnServices(false);  
+      }
+    }
+
+    if (onServices) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [onServices, setOnServices]);
+
   return (
     <Dialog>
         <header className='fixed right-0 left-0 z-50 bg-white'>
@@ -71,7 +109,7 @@ const Navbar = () => {
                           <span>{lang.languageName}</span>
                     </p>
                     {openLang && (
-                        <div className='absolute -right-7 h-[90px] w-[160px] justify-items-start rounded-lg py-3 bg-white top-8 border z-50 flex flex-col'>
+                        <div ref={modalRef} className='absolute -right-7 h-[90px] w-[160px] justify-items-start rounded-lg py-3 bg-white top-8 border z-50 flex flex-col'>
                           {languages &&
                             languages
                               .filter(item => item.id !== lang.id)
@@ -93,7 +131,7 @@ const Navbar = () => {
                <NavLink to={'/'} className='text-[18px] hover:text-[#FF7700] md:block hidden text-black font-semibold'>About</NavLink>
                 <div className='relative'>
                 <p onClick={()=>setOnServices(!onServices)} className='text-[18px] md:block hidden cursor-pointer hover:text-[#FF7700] text-black font-semibold'>Services</p>
-                  {onServices && <div className='absolute w-[224px] md:flex hidden top-8 z-50 border-2 right-0 border-gray-100 rounded-2xl p-3 bg-white shadow-lg flex-col '>
+                  {onServices && <div ref={menuRef} className='absolute w-[224px] md:flex hidden top-8 z-50 border-2 right-0 border-gray-100 rounded-2xl p-3 bg-white shadow-lg flex-col '>
                       {services && services.map((item)=>{
                          return <NavLink to={`services/${item.id}`} onClick={()=>setOnServices(!onServices)} key={item.id} className='text-sm font-normal cursor-pointer text-black'><p className='hover:bg-gray-200 p-2 rounded-2xl'>{item.title}</p></NavLink>
                   })}
@@ -111,7 +149,7 @@ const Navbar = () => {
                <NavLink to={'/'} onClick={()=>setopenNavbar(!openNavbar)} className='text-[18px] text-black font-semibold'>About</NavLink>
                <div className='relative'>
                 <NavLink onClick={()=>setOnServices(!onServices)}  className='text-[18px] hover:text-[#FF7700] text-black font-semibold'>Services</NavLink>
-                  {onServices && <div className='absolute top-20 z-50 rounded-2xl bg-gray-400 -mt-12 shadow-xl p-5'>
+                  {onServices && <div ref={menuRef} className='absolute top-20 z-50 rounded-2xl bg-gray-400 -mt-12 shadow-xl p-5'>
                   {services && services.map((item)=>{
                          return <NavLink to={`services/${item.id}`} onClick={()=>setOnServices(!onServices)} key={item.id} className='text-sm font-normal cursor-pointer rounded-2xl p-2 text-black'><p onClick={()=>setopenNavbar(!openNavbar)}>{item.title}</p></NavLink>
                   })}
