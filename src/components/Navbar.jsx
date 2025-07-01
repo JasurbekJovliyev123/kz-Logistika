@@ -1,13 +1,24 @@
 
 import { NavLink } from 'react-router-dom'
-import { languages } from '../constans'
+import { languages, services1 } from '../constans'
 import { TfiMenu } from "react-icons/tfi";
 import { IoMdClose } from "react-icons/io";
 import { services } from '../constans';
 import { Dialog,DialogClose,DialogContent,DialogPortal,DialogOverlay,DialogTrigger } from '@radix-ui/react-dialog';
 import { DialogHeader } from './ui/dialog';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import i18n from '@/i18n';
 const Navbar = () => {
+  const { i18n,t } = useTranslation();
+    const lang1 = i18n?.language;
+
+    const onChangeLanguage = (value) => {
+        i18n.changeLanguage(value);
+        console.log(value);
+    };
+
+
     const [openNavbar,setopenNavbar]=useState(false)
     const [openLang, setopenLang]=useState(false)
     const selectedLanguages = () => {
@@ -72,18 +83,18 @@ const Navbar = () => {
                  <img className='md:w-16 cursor-pointer w-[49px] h-[70px] md:h-[90px]' src="https://nomexlogistics.kz/assets/new-logo-wnId6dZ6.jpg" alt="" />
             </NavLink>
             <DialogTrigger asChild>
-                 <button className='bg-[#DF6800] hover:bg-[#FF7700] cursor-pointer text-white uppercase w-[120px] h-[45px] md:w-[146px] text-[10px] md:text-[12px] rounded-[12px] font-bold'>Find out the cost</button>
+                 <button className='bg-[#DF6800] hover:bg-[#FF7700] cursor-pointer text-white uppercase w-[120px] h-[45px] md:w-[146px] text-[10px] md:text-[12px] rounded-[12px] font-bold'> {t("Узнать стоимость")}</button>
             </DialogTrigger>
             
             <div className='md:block hidden'>
-               <p className='text-[#2D3748] text-[16px] font-medium'>E-mail:</p> 
+               <p className='text-[#2D3748] text-[16px] font-medium'>{t("E-mail")}:</p> 
                <div className='md:flex hidden items-center gap-x-2'>
                    <svg viewBox="0 0 24 24" focusable="false"  className="chakra-icon text-[#FF7700] w-5 h-5 chakra-icon css-147xtcg"><g fill="currentColor"><path d="M11.114,14.556a1.252,1.252,0,0,0,1.768,0L22.568,4.87a.5.5,0,0,0-.281-.849A1.966,1.966,0,0,0,22,4H2a1.966,1.966,0,0,0-.289.021.5.5,0,0,0-.281.849Z"></path><path d="M23.888,5.832a.182.182,0,0,0-.2.039l-6.2,6.2a.251.251,0,0,0,0,.354l5.043,5.043a.75.75,0,1,1-1.06,1.061l-5.043-5.043a.25.25,0,0,0-.354,0l-2.129,2.129a2.75,2.75,0,0,1-3.888,0L7.926,13.488a.251.251,0,0,0-.354,0L2.529,18.531a.75.75,0,0,1-1.06-1.061l5.043-5.043a.251.251,0,0,0,0-.354l-6.2-6.2a.18.18,0,0,0-.2-.039A.182.182,0,0,0,0,6V18a2,2,0,0,0,2,2H22a2,2,0,0,0,2-2V6A.181.181,0,0,0,23.888,5.832Z"></path></g></svg>
                    <p className='text-[#FF7700] text-[16px] font-normal cursor-pointer'>nomexlogistics.kz@gmail.com</p>
                </div>
             </div>
             <div className='md:block hidden'>
-               <p className='text-[#2D3748] text-[16px] font-medium'>Contact number:</p> 
+               <p className='text-[#2D3748] text-[16px] font-medium'>{t("Контактный номер")}:</p> 
                <div className='flex items-center gap-x-2'>
                    <svg viewBox="0 0 14 14" focusable="false" className="text-[#FF7700] w-5 h-5 chakra-icon chakra-icon css-5mtj0t"><path fill="currentColor" d="M2.20731,0.0127209 C2.1105,-0.0066419 1.99432,-0.00664663 1.91687,0.032079 C0.871279,0.438698 0.212942,1.92964 0.0580392,2.95587 C-0.426031,6.28627 2.20731,9.17133 4.62766,11.0689 C6.77694,12.7534 10.9012,15.5223 13.3409,12.8503 C13.6507,12.5211 14.0186,12.037 13.9993,11.553 C13.9412,10.7397 13.186,10.1588 12.6051,9.71349 C12.1598,9.38432 11.2304,8.47427 10.6495,8.49363 C10.1267,8.51299 9.79754,9.05515 9.46837,9.38432 L8.88748,9.96521 C8.79067,10.062 7.55145,9.24878 7.41591,9.15197 C6.91248,8.8228 6.4284,8.45491 6.00242,8.04829 C5.57644,7.64167 5.18919,7.19632 4.86002,6.73161 C4.7632,6.59607 3.96933,5.41495 4.04678,5.31813 C4.04678,5.31813 4.72448,4.58234 4.91811,4.2919 C5.32473,3.67229 5.63453,3.18822 5.16982,2.45243 C4.99556,2.18135 4.78257,1.96836 4.55021,1.73601 C4.14359,1.34875 3.73698,0.942131 3.27227,0.612963 C3.02055,0.419335 2.59457,0.0708094 2.20731,0.0127209 Z"></path></svg>
                    <p className='text-[#FF7700] text-[16px] font-normal  cursor-pointer'>+7 771 054 06 06</p>
@@ -91,7 +102,7 @@ const Navbar = () => {
             </div>
             <button className='bg-[#FF7700] lg:flex hidden cursor-pointer text-white uppercase h-[45px] w-[146px] text-[12px] rounded-[12px]  items-center justify-center gap-x-2 font-bold'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-phone" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>
-                <p>Call</p>
+                <p>{t("Позвонить")}</p>
             </button>
              <NavLink to={'https://api.whatsapp.com/send/?phone=%2B77710540606&text&type=phone_number&app_absent=0'}>
              <button className='bg-[#25D366] cursor-pointer text-white uppercase h-[45px] w-[146px] text-[12px] rounded-[12px] lg:flex hidden items-center justify-center gap-x-2 font-bold'>
@@ -114,7 +125,10 @@ const Navbar = () => {
                             languages
                               .filter(item => item.id !== lang.id)
                               .map((item) => (
-                                <p key={item.id} onClick={() => handleLanguages(item)}>
+                                <p key={item.id} onClick={() => {
+                                  handleLanguages(item)
+                                  onChangeLanguage(item.value)
+                                  }}>
                                   <span className='text-black p-1 hover:bg-gray-200 w-full block rounded-md'>
                                     {item.languageName}
                                   </span>
@@ -127,17 +141,25 @@ const Navbar = () => {
         </div>
         <div className='container'>
              <div className='w-full flex border-b border-b-gray-300 pb-2 items-center gap-x-6 justify-end'>
-               <NavLink to={'/'} className='text-[18px] hover:text-[#FF7700] md:block hidden text-black font-semibold'>Home</NavLink>
-               <NavLink to={'/'} className='text-[18px] hover:text-[#FF7700] md:block hidden text-black font-semibold'>About</NavLink>
+               <NavLink to={'/'} className='text-[18px] hover:text-[#FF7700] md:block hidden text-black font-semibold'>{t("Home")}</NavLink>
+               <NavLink to={'/'} className='text-[18px] hover:text-[#FF7700] md:block hidden text-black font-semibold'>{t("About")}</NavLink>
                 <div className='relative'>
-                <p onClick={()=>setOnServices(!onServices)} className='text-[18px] md:block hidden cursor-pointer hover:text-[#FF7700] text-black font-semibold'>Services</p>
+                <p onClick={()=>setOnServices(!onServices)} className='text-[18px] md:block hidden cursor-pointer hover:text-[#FF7700] text-black font-semibold'>{t("Services")}</p>
                   {onServices && <div ref={menuRef} className='absolute w-[224px] md:flex hidden top-8 z-50 border-2 right-0 border-gray-100 rounded-2xl p-3 bg-white shadow-lg flex-col '>
-                      {services && services.map((item)=>{
-                         return <NavLink to={`services/${item.id}`} onClick={()=>setOnServices(!onServices)} key={item.id} className='text-sm font-normal cursor-pointer text-black'><p className='hover:bg-gray-200 p-2 rounded-2xl'>{item.title}</p></NavLink>
-                  })}
+                  {services1 && services1.map((item) => {  
+                              const title = item.title[lang1] || item.title.en; // Get title in current language
+                              return (
+                                <NavLink 
+                                 to={`services/${item.id}`} onClick={()=>setOnServices(!onServices)} key={item.id}
+                                  className='text-sm font-normal cursor-pointer text-black'
+                                >
+                                  <p className='hover:bg-gray-200 p-2 rounded-2xl'>{title}</p>
+                                </NavLink>
+                              )
+                            })}
                   </div>}
                </div>
-               <NavLink to={'/contact'} className='text-[18px] hover:text-[#FF7700] md:block hidden text-black font-semibold'>Contact</NavLink>
+               <NavLink to={'/contact'} className='text-[18px] hover:text-[#FF7700] md:block hidden text-black font-semibold'>{t("Contact")}</NavLink>
                  <TfiMenu onClick={()=>setopenNavbar(!openNavbar)} className='text-3xl md:hidden block cursor-pointer'/>
             </div>
             
@@ -145,7 +167,7 @@ const Navbar = () => {
           <div className='w-full'>
                <div className='absolute top-0 left-0 right-0 w-full p-6 py-16 h-[100vh] bg-gray-300 flex flex-col gap-3'>
               <IoMdClose onClick={()=>setopenNavbar(!openNavbar)} className='text-2xl cursor-pointer ml-auto'/>
-               <NavLink to={'/'} onClick={()=>setopenNavbar(!openNavbar)} className='text-[18px] hover:text-[#FF7700] text-black font-semibold'>Home</NavLink>
+               <NavLink to={'/'} onClick={()=>setopenNavbar(!openNavbar)} className='text-[18px] hover:text-[#FF7700] text-black font-semibold'>{t("Home")}</NavLink>
                <NavLink to={'/'} onClick={()=>setopenNavbar(!openNavbar)} className='text-[18px] text-black font-semibold'>About</NavLink>
                <div className='relative'>
                 <NavLink onClick={()=>setOnServices(!onServices)}  className='text-[18px] hover:text-[#FF7700] text-black font-semibold'>Services</NavLink>
@@ -170,23 +192,23 @@ const Navbar = () => {
               <DialogClose className='mr-auto flex justify-end w-full text-end cursor-pointer'><IoMdClose className='text-xl z-20 '/></DialogClose>
                   <DialogHeader>
                     <form className='md:w-[480px] w-full mx-auto md:h-[450px] bg-white rounded-[16px] px-5 md:px-10 py-4 md:py-[36px]'>
-                 <p className='mb-3 text-[#1A202C] text-[22px] text-center font-medium'>Cargo Transportation Services NOMEX LOGISTICS</p>
+                 <p className='mb-3 text-[#1A202C] text-[22px] text-center font-medium'>{t("Услуги Грузоперевозок NOMEX LOGISTICS")}</p>
                  <div className='w-full flex items-center gap-x-2'>
-                   <input placeholder='From' className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
-                   <input placeholder='To' className='bg-[#F1F1F1] placeholder:font-medium w-[50%]  flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
+                   <input placeholder={t("Откуда")} className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
+                   <input placeholder={t("Куда")} className='bg-[#F1F1F1] placeholder:font-medium w-[50%]  flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
                  </div>
-                 <p className='my-3 text-[#1A202C] text-sm font-medium'>Cargo information:</p>
-                   <input placeholder='Cargo description (weight, volume)' className='bg-[#F1F1F1] w-full placeholder:font-medium flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
-                   <p className='my-3 text-[#1A202C] text-sm font-medium'>Contact details</p>
+                 <p className='my-3 text-[#1A202C] text-sm font-medium'>{t("Информация о грузе:")}</p>
+                   <input placeholder={t("Описание груза (вес, объем)")} className='bg-[#F1F1F1] w-full placeholder:font-medium flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
+                   <p className='my-3 text-[#1A202C] text-sm font-medium'>{t("Контактные данные")}</p>
                  <div className='w-full flex items-center gap-x-2'>
-                   <input placeholder='Your name' className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
-                   <input placeholder='Your phone' className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
+                   <input placeholder={t("Ваше имя")} className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
+                   <input placeholder={t("Ваш телефон")}  className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
                  </div>
                  <div className='w-full flex my-3 items-center gap-x-2'>
-                   <input placeholder='Your Email' className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="email" name="" />
-                   <input placeholder='Company' className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
+                   <input placeholder={t("Your Email")} className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="email" name="" />
+                   <input placeholder={t("Ваш")} className='bg-[#F1F1F1] placeholder:font-medium w-[50%] md:flex-1 outline-none px-2.5 h-10 rounded-[12px] border border-transparent focus:border-amber-400 focus:ring-0' type="text" name="" />
                  </div>
-                 <button className='bg-[#FF7700] text-white mt-4 text-[16px] cursor-pointer h-[45px] w-full rounded-[12px] font-medium'>Order cargo transportation</button>
+                 <button className='bg-[#FF7700] text-white mt-4 text-[16px] cursor-pointer h-[45px] w-full rounded-[12px] font-medium'>{t("Заказать грузоперевозку")}</button>
               </form>
                   </DialogHeader>
              </DialogContent>

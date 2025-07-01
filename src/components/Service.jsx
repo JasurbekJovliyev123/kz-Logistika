@@ -13,6 +13,8 @@ const Service = () => {
   console.log(id);
    const serviceData=services.find((item)=>item.id==id)
    console.log(serviceData);
+   console.log(serviceData);
+   
    const [formData, setFormData] = useState({
     name: '',
     phone: ''
